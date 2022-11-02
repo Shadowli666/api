@@ -13,13 +13,18 @@
 <body>
 
     <div class="document">
-        <a href="/calc.html">
-            <img src="images/bcv_logo.png" alt="Logo BCV" class="center" width="300px" >
-        </a>
+        <img src="images/bcv_logo.png" alt="Logo BCV" class="center" width="300px" >
         <div class="text-center main-container">
-            <div class="text">Tasa: <span id="texto" class="rate-text"></span></div>
-            <div class="text">Fecha de consulta: <span id="al" class="date-text"></span></div>
+            <div>
+                <label for="tasa">Precio Actual: </label>
+                <input type="number" id="tasa" disabled>
             </div>
+                <label for="petroValue">Valor en Dólares:</label>
+                <input type="number" name="dolarValue" id="dolarValue">
+                <div>
+                    <label for="totalBs">Total en Bolivares:</label>
+                    <input type="text" name="totalBs" id="totalBs" disabled>
+                </div>
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.16.105/build/pdf.min.js"></script>
