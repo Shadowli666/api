@@ -11,24 +11,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
 </head>
 <body>
-
     <div class="document">
         <img src="../images/bcv_logo.png" alt="Logo BCV" class="center" width="300px" >
         <div class="text-center main-container">
             <div>
-                <label for="tasa">Precio Actual: </label>
-                <input type="number" id="tasa" disabled>
+                <label>Convertir a:</label>
+                <select>
+                    <option>$</option>
+                    <option>₽</option>
+                </select>
             </div>
-                <label for="petroValue">Valor en Dólares:</label>
-                <input type="number" name="dolarValue" id="dolarValue">
-                <div>
-                    <label for="totalBs">Total en Bolivares:</label>
-                    <input type="text" name="totalBs" id="totalBs" disabled>
-                </div>
+            <div>
+                <label for="value">Monto en <span id="coin">Petros:</span></label>
+                <input type="number" id="value">
             </div>
+            <div>
+                <label for="total">Total</label>
+                <input type="text">
+            </div>
+            <div class="muted-text" id="disclaimer">DISCLAIMER</div>
+        </div>
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.16.105/build/pdf.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="../main.js" type="module"></script>
+<script src="../petro.js"></script>
 </html>

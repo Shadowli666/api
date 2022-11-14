@@ -16,7 +16,7 @@ $.getJSON("https://api.exchangedyn.com/markets/quotes/usdves/bcv?fbclid=IwAR0VKR
       let dateOptions = {year: 'numeric', month: 'long', day: 'numeric'};
       let hourOptions = {hour: '2-digit', minute: '2-digit'};
       priceBCV.toFixed(4)
-      formatedDate = date.toLocaleDateString(navigatorLanguage,dateOptions)
+      let formatedDate = date.toLocaleDateString(navigatorLanguage,dateOptions)
       //bank source name
       $('#banco').html(data.name)
       //price 
