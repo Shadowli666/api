@@ -12,13 +12,13 @@
 </head>
 <body>
     <div class="document">
-        <img src="../images/bcv_logo.png" alt="Logo BCV" class="center" width="300px" >
+        <img src="../images/petro_logo.png" alt="Logo BCV" class="center" width="200px" >
         <div class="text-center main-container">
             <div>
                 <label>Convertir a:</label>
-                <select>
+                <select id="selectOpt">
                     <option>$</option>
-                    <option>₽</option>
+                    <option>Bs.</option>
                 </select>
             </div>
             <div>
@@ -26,11 +26,17 @@
                 <input type="number" id="value">
             </div>
             <div>
-                <label for="total">Total</label>
-                <input type="text">
+                <label for="tasa">Tasa:</label>
+                <input type="number" id="tasa" disabled>
             </div>
-            <div class="muted-text" id="disclaimer">DISCLAIMER</div>
+            <div>
+                <label for="total">Total:</label>
+                <input type="text" id="total">
+            </div>
         </div>
+        <a href="../calc/index.html">
+            <h1>BCV</h1>
+        </a>
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.16.105/build/pdf.min.js"></script>

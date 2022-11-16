@@ -1,23 +1,47 @@
 //uncomment for quokka tests
 //import fetch from 'node-fetch';
-//import { json } from 'stream/consumers';
-let perro,gato =0
-let data = {
-    "coins":["PTR"],
-    "fiats": ["USD", "BS"]
+const urlPetro = 'https://petroapp-price.petro.gob.ve/price/' //API url
+window.onload = async() =>{
+    //params sended to API
+    const data = {
+        "coins":["PTR"],
+        "fiats": ["USD", "BS"]
+    }
+    //api request
+    const response = await fetch(urlPetro,{
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {"Content-Type": "application/json"}
+        })
+    const retrievedData = await response.json()//save in const response from API call
+    init(retrievedData)
 }
 
-fetch('https://petroapp-price.petro.gob.ve/price/',{
-method: "POST",
-body: JSON.stringify(data),
-headers: {"Content-Type": "application/json"}
-}).then(response => response.json())
-.then(json => console.log(json))
-.catch(err => console.log(err))
+//Selector of DOM Elements
+const tasaElement = document.getElementById('tasa')// Fill with rate 
+const valueElement = document.getElementById('value') //Input of currency
+const selectElement = document.getElementById('selectOpt') // Option Element
+const totalElement = document.getElementById('total')//Total Element
 
-fetch("https://api.exchangedyn.com/markets/quotes/usdves/bcv?fbclid=IwAR0VKRtIIlO3tthfNKJ2tu9EUmtujb-6VuxfwfrKgMbaY1fAE8et8w1jQuM",{
-    method: "GET",
-})
-.then(response => response.json())
-.then(json => console.log(json))
-.catch(err => console.log(err))
+//Init function that recieves retrievedData
+const init = (retrievedData) =>{
+    const bsValue = retrievedData.data.PTR.BS
+    const usdValue = retrievedData.data.PTR.USD
+    //Fill tasaElement with first value (usd)
+    tasaElement.value = usdValue
+    //Onchange Event that changes tasaElement
+    selectElement.addEventListener('change',()=>{
+        if(selectElement.value == '$'){
+            tasaElement.value = usdValue
+            totalElement.value = valueElement.value * tasaElement.value
+        }
+        else{
+            tasaElement.value = bsValue
+            totalElement.value = valueElement.value * tasaElement.value
+        }
+    },false)
+    //Keydown Event that calculates the total amount of the operation
+    valueElement.addEventListener('keyup',()=>{
+        totalElement.value = valueElement.value * tasaElement.value
+    },false)
+}
